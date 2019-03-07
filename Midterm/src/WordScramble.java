@@ -1,7 +1,7 @@
 /*Todo
  * convert data types
  * check consistent spacings
- * 
+ * rescramble if words are the same
  */
 import java.io.*;
 import java.util.Scanner;
@@ -114,6 +114,12 @@ public class WordScramble {
 				System.out.printf("Correct! %d points!\n", tempScore);
 			}
 			else if (guess.equalsIgnoreCase("hint")){
+				//prevents error if user asks for to many hints
+				if (tempScore == 1) {
+					System.out.printf("\nThe answer was: %s\nPoints this round = %d\n", word, --tempScore); 
+					break;
+				}
+					
 				System.out.printf("\nFor %d Points\n",--tempScore);
 				hints(hints, word);
 				hints++;
